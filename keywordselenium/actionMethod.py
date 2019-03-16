@@ -15,7 +15,8 @@ class ActionMethod:
             self.driver = webdriver.Firefox()
         else:
             self.driver = webdriver.Edge()
-    
+
+    #输入url
     def get_url(self,url):
         self.driver.get(url)
 
@@ -26,12 +27,18 @@ class ActionMethod:
         return element
 
         #输入元素
-        def element_send_keys(self,key,value):
-            element = self.get_element(key)
-            element.send_keys(value)
+    def element_send_keys(self,key,value):
+        element = self.get_element(key)
+        element.send_keys(value)
 
-        def click_element(self,key):
-            self.get_element(key).click()
+    #点击事件
+    def click_element(self,key):
+        self.get_element(key).click()
 
-        def sleep_time(self):
-            time.sleep(3)
+    #等待
+    def sleep_time(self):
+        time.sleep(3)
+
+    #关闭浏览器
+    def close_browser(self,):
+        self.driver.close()

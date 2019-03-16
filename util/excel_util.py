@@ -50,6 +50,3 @@ class ExcelUtil:
         #保存表格
         write_data.save(r"F:\selenium_test\config\casedata.xls")
 
-if __name__ == '__main__':
-    ex = ExcelUtil()
-    print(ex.get_col_value(10,3))
