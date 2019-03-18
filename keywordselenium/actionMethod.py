@@ -9,16 +9,16 @@ class ActionMethod:
 
     #打开浏览器
     def open_browser(self,browser):
-        if browser == 'Chrome':
-            self.driver = webdriver.Chrome()
-        elif browser == 'firefox':
-            self.driver = webdriver.Firefox()
-        else:
-            self.driver = webdriver.Edge()
-
+        self.driver = webdriver.Chrome()
+    
     #输入url
     def get_url(self,url):
         self.driver.get(url)
+
+    #获取title
+    def get_title(self):
+        title = self.driver.title
+        return title
 
     #定位元素
     def get_element(self,key):

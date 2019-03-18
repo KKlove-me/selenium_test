@@ -1,15 +1,18 @@
 #coding=utf-8
 import xlrd
 from xlutils.copy import copy
+import time
 
 class ExcelUtil:
     def __init__(self,excel_path=None,index=None):
         if excel_path == None:
-            excel_path = r"F:\selenium_test\config\casedata.xls"
+            self.excel_path = r"F:\selenium_test\config\keyword.xls"
+        else:
+            self.excel_path = excel_path
         if index == None:
             index = 0
         #打开excel
-        self.data = xlrd.open_workbook(excel_path)
+        self.data = xlrd.open_workbook(self.excel_path)
         #通过索引顺序获取sheet=0
         self.table = self.data.sheets()[index]
 
@@ -42,11 +45,12 @@ class ExcelUtil:
     #写入数据
     def write_value(self,row,cell,value):
         #读取excel数据
-        read_value = self.data
+        read_value = xlrd.open_workbook(self.excel_path)
         #复制一份
         write_data = copy(read_value)
         #写入数据
-        write_data.get_sheet(0).write(row,3,value)
+        write_data.get_sheet(0).write(row,cell,value)
         #保存表格
-        write_data.save(r"F:\selenium_test\config\casedata.xls")
+        write_data.save(self.excel_path)
+        time.sleep(1)
 
